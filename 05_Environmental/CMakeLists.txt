@@ -1,8 +1,45 @@
-cmake_minimum_required(VERSION 3.10)
-project(Window VERSION 0.01)
-add_executable(Window Window.c)
+cmake_minimum_required (VERSION 2.6)
 
-find_package(Curses REQUIRED)
+set (PROJECT demo)
+project (${PROJECT})
+
+include_directories (.)
+
+set (LIBRARY
+		library_reg)
+
+foreach (LIBRARY ${LIBRARY})
+	add_subdirectory (${LIBRARY} bin/${LIBRARY})
+endforeach ()
+
+
+set (HEADERS)
+set (SOURCES main.c)
+
+
+source_group ("Header Files" FILES ${HEADERS})
+source_group ("Source Files" FILES ${SOURCES})
+
+add_executable (${PROJECT} ${HEADERS} ${SOURCES})
+
+add_definitions(-DWithoutUTF=FALSE)
+
+target_link_libraries(${PROJECT} ${LIBRARY})
+
+find_library(PCRE_LIBRARY pcre2-8)
+
+find_library(CURSES_LIBRARY ncursesw)
 include_directories(${CURSES_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(Window ${CURSES_LIBRARY})
+target_link_libraries(${PROJECT} ${CURSES_LIBRARY} ${PCRE_LIBRARY})
+
+
 configure_file(Cmakeconfig.h.in config.h)
+
+set (TRASHDIR CMakeFiles bin library_reg/bin library_reg/CMakeFiles)
+set (TRASH CMakeCache.txt cmake_install.cmake config.h Makefile demo 
+    library_reg/CMakeCache.txt library_reg/cmake_install.cmake library_reg/config.h library_reg/Makefile library_reg/liblibrary_reg.a)
+
+add_custom_target(allclean
+    COMMAND rm -rf ${TRASHDIR}
+    COMMAND rm -f ${TRASH}
+)
