@@ -6,9 +6,11 @@ project (${PROJECT})
 
 set (SOURCES sources/library_reg.c)
 
-configure_file(Cmakeconfig.h.in config.h)
+option(WithoutUTF "Without UTF" OFF)
+configure_file(Cmakeconfig.h.in config.h @ONLY)
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 source_group ("Source Files" FILES ${SOURCES})
-add_definitions(-DWithoutUTF=FALSE)
 
 add_library (${PROJECT} ${SOURCES})

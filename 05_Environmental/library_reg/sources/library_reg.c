@@ -7,7 +7,7 @@
 #include <pcre2.h>
 #include <ncurses.h>
 #include <locale.h>
-#include <bin/library_reg/config.h>
+#include "config.h"
 
 int reg_parse(char *pat, char *sub, WINDOW * win)
 {
@@ -29,7 +29,7 @@ int reg_parse(char *pat, char *sub, WINDOW * win)
     subject = (PCRE2_SPTR)sub;
     subject_length = (PCRE2_SIZE)strlen((char *)subject);
 
-    #if WithoutUTF
+    #ifdef WithoutUTF
     re = pcre2_compile(pattern, PCRE2_ZERO_TERMINATED, 0, &errnum, &erroffs, NULL);
     #else
     re = pcre2_compile(pattern, PCRE2_ZERO_TERMINATED, PCRE2_UCP, &errnum, &erroffs, NULL);
@@ -37,8 +37,8 @@ int reg_parse(char *pat, char *sub, WINDOW * win)
     if (re == NULL) {
         PCRE2_UCHAR buffer[256];
         pcre2_get_error_message(errnum, buffer, sizeof(buffer));
-        wprintw(win, "%s %s\n", pat, sub);
-        wprintw(win, "PCRE2 compilation failed at offset %d: %s\n", (int)erroffs,
+        wprintw(win, "\n %s %s\n", pat, sub);
+        wprintw(win, " PCRE2 compilation failed at offset %d: %s\n", (int)erroffs,
                buffer);
         return 1;
     }
@@ -50,12 +50,12 @@ int reg_parse(char *pat, char *sub, WINDOW * win)
     if (rc < 0) {
         switch(rc) {
         case PCRE2_ERROR_NOMATCH:
-            wprintw(win, "%s %s\n", pat, sub);
-            wprintw(win, "No match\n");
+            wprintw(win, "\n %s %s\n", pat, sub);
+            wprintw(win, " No match\n");
             break;
         default:
-            wprintw(win, "%s %s\n", pat, sub);
-            wprintw(win, "Matching error %d\n", rc);
+            wprintw(win, "\n %s %s\n", pat, sub);
+            wprintw(win, " Matching error %d\n", rc);
             break;
         }
         pcre2_match_data_free(match_data);   /* Release memory used for the match */
@@ -64,11 +64,11 @@ int reg_parse(char *pat, char *sub, WINDOW * win)
     }
 
     ovector = pcre2_get_ovector_pointer(match_data);
-    wprintw(win, "%s %s\n", pat, sub);
+    wprintw(win, "\n %s %s\n", pat, sub);
     for (i = 0; i < rc; i++) {
-        wprintw(win, "%2ld: %.*s\n", ovector[2*i], 
-			     (int)(ovector[2*i+1] - ovector[2*i]),
-			     subject + ovector[2*i]);
+        wprintw(win, " %2ld: %.*s\n", ovector[2*i], 
+                 (int)(ovector[2*i+1] - ovector[2*i]),
+                 subject + ovector[2*i]);
     }
     pcre2_match_data_free(match_data);  /* Release the memory that was used */
     pcre2_code_free(re);                /* for the match data and the pattern. */

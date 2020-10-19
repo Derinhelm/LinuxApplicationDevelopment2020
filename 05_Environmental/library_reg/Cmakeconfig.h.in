@@ -1,2 +1,1 @@
-#define WithoutUTF FALSE
-int reg_parse(char *pat, char *sub, WINDOW * win);
+#cmakedefine WithoutUTF

@@ -1,10 +1,11 @@
 #include <ncurses.h>
-#include "bin/library_reg/config.h"
 #include <locale.h>
 
 #define DX 3
 #define ONLELINE 3
 #define MAXSTR 80
+
+int reg_parse(char *pat, char *sub, WINDOW * win);
 
 void main() {
     setlocale(LC_ALL, "");
@@ -31,9 +32,8 @@ void main() {
         werase(winB); box(winB, 0, 0);
         mvwgetnstr(winB, 1, 1, inB, MAXSTR);
         werase(winO);
+        reg_parse(inA, inB, winO);
         box(winO, 0, 0);
-        wmove(winO, 1, 2);
-		reg_parse(inA, inB, winO);
         wrefresh(winO);
     } while(*inA);
 

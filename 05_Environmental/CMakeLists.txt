@@ -8,6 +8,7 @@ include_directories (.)
 set (LIBRARY
 		library_reg)
 
+
 foreach (LIBRARY ${LIBRARY})
 	add_subdirectory (${LIBRARY} bin/${LIBRARY})
 endforeach ()
@@ -23,20 +24,17 @@ source_group ("Source Files" FILES ${SOURCES})
 add_executable (${PROJECT} ${HEADERS} ${SOURCES})
 
 
-target_link_libraries(${PROJECT} ${LIBRARY})
 
 find_library(PCRE_LIBRARY pcre2-8)
 
 find_library(CURSES_LIBRARY ncursesw)
 include_directories(${CURSES_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(${PROJECT} ${CURSES_LIBRARY} ${PCRE_LIBRARY})
+target_link_libraries(${PROJECT} ${LIBRARY} ${CURSES_LIBRARY} ${PCRE_LIBRARY})
 
-
-configure_file(Cmakeconfig.h.in config.h)
 
 set (TRASHDIR CMakeFiles bin library_reg/bin library_reg/CMakeFiles)
-set (TRASH CMakeCache.txt cmake_install.cmake config.h Makefile demo 
-    library_reg/CMakeCache.txt library_reg/cmake_install.cmake library_reg/config.h library_reg/Makefile library_reg/liblibrary_reg.a)
+set (TRASH CMakeCache.txt cmake_install.cmake Makefile demo 
+    library_reg/CMakeCache.txt library_reg/cmake_install.cmake library_reg/Makefile library_reg/liblibrary_reg.a)
 
 add_custom_target(allclean
     COMMAND rm -rf ${TRASHDIR}
