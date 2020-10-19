@@ -4,10 +4,11 @@ set (PROJECT library_reg)
 
 project (${PROJECT})
 
-set (HEADERS library_reg.h)
 set (SOURCES sources/library_reg.c)
 
-source_group ("Header Files" FILES ${HEADERS})
-source_group ("Source Files" FILES ${SOURCES})
+configure_file(Cmakeconfig.h.in config.h)
 
-add_library (${PROJECT} ${HEADERS} ${SOURCES})
+source_group ("Source Files" FILES ${SOURCES})
+add_definitions(-DWithoutUTF=FALSE)
+
+add_library (${PROJECT} ${SOURCES})

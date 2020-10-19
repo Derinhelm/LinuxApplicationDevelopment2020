@@ -22,7 +22,6 @@ source_group ("Source Files" FILES ${SOURCES})
 
 add_executable (${PROJECT} ${HEADERS} ${SOURCES})
 
-add_definitions(-DWithoutUTF=FALSE)
 
 target_link_libraries(${PROJECT} ${LIBRARY})
 

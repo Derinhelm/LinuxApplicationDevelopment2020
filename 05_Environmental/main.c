@@ -1,5 +1,5 @@
 #include <ncurses.h>
-#include <library_reg/library_reg.h>
+#include "bin/library_reg/config.h"
 #include <locale.h>
 
 #define DX 3

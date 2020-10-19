@@ -5,9 +5,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <pcre2.h>
-#include "../library_reg.h"
 #include <ncurses.h>
 #include <locale.h>
+#include <bin/library_reg/config.h>
 
 int reg_parse(char *pat, char *sub, WINDOW * win)
 {
@@ -29,7 +29,7 @@ int reg_parse(char *pat, char *sub, WINDOW * win)
     subject = (PCRE2_SPTR)sub;
     subject_length = (PCRE2_SIZE)strlen((char *)subject);
 
-    #if (WithoutUTF == TRUE)
+    #if WithoutUTF
     re = pcre2_compile(pattern, PCRE2_ZERO_TERMINATED, 0, &errnum, &erroffs, NULL);
     #else
     re = pcre2_compile(pattern, PCRE2_ZERO_TERMINATED, PCRE2_UCP, &errnum, &erroffs, NULL);
