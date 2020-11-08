@@ -1,3 +1,6 @@
+#include <stddef.h>
+#include <stdlib.h>
+
 #ifndef BUF_INIT_CAPACITY
 #  define BUF_INIT_CAPACITY 8
 #endif

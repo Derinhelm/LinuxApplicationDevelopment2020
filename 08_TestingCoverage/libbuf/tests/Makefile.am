@@ -1,8 +1,8 @@
-TESTS = stest
-check_PROGRAMS = stest
+TESTS = dummy
+check_PROGRAMS = dummy
 
-CFLAGS = -I$(top_builddir)/src @CHECK_CFLAGS@
-LDADD = $(top_builddir)/src/libnamegen.la @CHECK_LIBS@
+CFLAGS = -I$(top_builddir)/src
+LDADD = $(top_builddir)/src/libbuf.la
 
 .ts.c:
 	checkmk $< > $@
