@@ -2,14 +2,25 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AC_INIT([Growable Memory Buffers], [0.0.0], [Derinhelm@yandex.ru])
 AM_INIT_AUTOMAKE([foreign])
 LT_INIT([disable-static])
 AC_CONFIG_SRCDIR([src/buf.h])
 AC_CONFIG_HEADERS([config.h])
 
+
+#
+PKG_CHECK_MODULES([CHECK],[check])
+
 # Checks for programs.
+AC_PROG_CXX
+AC_PROG_AWK
 AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
 
 # Checks for libraries.
 
@@ -27,5 +38,8 @@ AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([gettimeofday strtoull])
 
-AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile])
+AC_CONFIG_FILES([Makefile
+                 tests/Makefile
+                 src/Makefile])
+
 AC_OUTPUT

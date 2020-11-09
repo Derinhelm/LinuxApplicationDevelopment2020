@@ -27,12 +27,6 @@
 #include <stdlib.h>
 #include "buf.h"
 
-struct buf {
-    size_t capacity;
-    size_t size;
-    char buffer[];
-};
-
 void *
 buf_grow1(void *v, size_t esize, ptrdiff_t n)
 {

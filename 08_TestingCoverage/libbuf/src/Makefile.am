@@ -1,6 +1,7 @@
-CFLAGS += -Wall -fprofile-arcs -ftest-coverage -O0 -g
+AM_CFLAGS = -Wall
 
 lib_LTLIBRARIES = libbuf.la
 
-gcov:
-	gcov .libs/libbuf -t -j -k
+
+bin_PROGRAMS=buf
+buf_LDADD = libbuf.la

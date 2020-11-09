@@ -49,6 +49,11 @@
 #define buf_clear(v) \
     ((v) ? (buf_ptr((v))->size = 0) : 0)
 
+struct buf {
+    size_t capacity;
+    size_t size;
+    char buffer[];
+};
 
 void *
 buf_grow1(void *v, size_t esize, ptrdiff_t n);
