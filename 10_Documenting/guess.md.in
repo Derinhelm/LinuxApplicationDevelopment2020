@@ -1,15 +1,11 @@
 /// @mainpage
 # @PACKAGE_NAME@ v. @PACKAGE_VERSION@
 
-## Intro
+Guess is used for guessing a hidden number
 
-This is free and __unencumbered__ software released into the *public domain*.
+Usage: guess [OPTION]
 
-## Usage
+    --help		print this help, then exit
+    --version		print version number, then exit
 
-How to use all of this. More API info in @ref library
-
-## Source
-
-See sources in `libnamegen.c`
 

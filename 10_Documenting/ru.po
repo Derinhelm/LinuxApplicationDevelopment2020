@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: guess 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 19:58+0300\n"
+"POT-Creation-Date: 2020-11-23 01:01+0300\n"
 "PO-Revision-Date: 2020-11-15 18:59+0300\n"
 "Last-Translator: Derin <Derinhelm@yandex.ru>\n"
 "Language-Team: Russian\n"
@@ -18,35 +18,72 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: guess.c:29
-#, c-format
-msgid "Input a number from 0 to 100: "
-msgstr "Введите число от 0 до 100: "
+#: guess.c:19
+msgid ""
+"Guess is used for guessing a hidden number\n"
+"\n"
+"Usage: guess [OPTION]\n"
+"\n"
+"    --help\t\tprint this help, then exit\n"
+"    --version\t\tprint version number, then exit\n"
+"\n"
+msgstr ""
+"Guess используется для угадывания загаданного числа\n"
+"\n"
+"Использование: guess [опции]\n"
+"\n"
+"    --help\t\tпечатает эту информацию, затем выходит\n"
+"    --version\t\tпечатает номер версии, затем выходит\n"
+"\n"
 
-#: guess.c:34
+#: guess.c:84
+#, c-format
+msgid "Input a number from "
+msgstr "Введите число от "
+
+#: guess.c:86
+#, c-format
+msgid " to "
+msgstr " до "
+
+#: guess.c:117
+#, c-format
+msgid "You wrote a wrong number\n"
+msgstr "Вы ввели неверное число\n"
+
+#: guess.c:145
 msgid "YES"
 msgstr "ДА"
 
-#: guess.c:35
+#: guess.c:146
 msgid "NO"
 msgstr "НЕТ"
 
-#: guess.c:37 guess.c:52
+#: guess.c:149 guess.c:166
 #, c-format
-msgid "Is the number greater than %d (YES or NO)?\n"
-msgstr "Число больше %d (ДА или НЕТ)?\n"
+msgid "Is the number greater than "
+msgstr "Число больше "
 
-#: guess.c:45
+#: guess.c:151 guess.c:168
+#, c-format
+msgid " (YES or NO)?\n"
+msgstr " (ДА или НЕТ)?\n"
+
+#: guess.c:159
 #, c-format
 msgid "Wrong input!\n"
 msgstr "Неверный ввод!\n"
 
-#: guess.c:61
+#: guess.c:177
 #, c-format
-msgid "Your number is %d! \n"
-msgstr "Вы загадали %d! \n"
+msgid "Your number is "
+msgstr "Вы загадали "
 
-#: guess.c:63
+#: guess.c:180
 #, c-format
 msgid "You made a mistake when answering the questions :( \n"
 msgstr "При ответе на вопросы вы сделали ошибку :( \n"
+
+#, fuzzy
+#~ msgid "Is the number greater than %s (YES or NO)?\n"
+#~ msgstr "Число больше %d (ДА или НЕТ)?\n"
