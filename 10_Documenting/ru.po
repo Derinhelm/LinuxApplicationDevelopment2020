@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: guess 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-15 22:24+0300\n"
+"POT-Creation-Date: 2020-11-22 19:58+0300\n"
 "PO-Revision-Date: 2020-11-15 18:59+0300\n"
 "Last-Translator: Derin <Derinhelm@yandex.ru>\n"
 "Language-Team: Russian\n"
@@ -18,35 +18,35 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: guess.c:20
+#: guess.c:29
 #, c-format
 msgid "Input a number from 0 to 100: "
 msgstr "Введите число от 0 до 100: "
 
-#: guess.c:25
+#: guess.c:34
 msgid "YES"
 msgstr "ДА"
 
-#: guess.c:26
+#: guess.c:35
 msgid "NO"
 msgstr "НЕТ"
 
-#: guess.c:28 guess.c:43
+#: guess.c:37 guess.c:52
 #, c-format
 msgid "Is the number greater than %d (YES or NO)?\n"
 msgstr "Число больше %d (ДА или НЕТ)?\n"
 
-#: guess.c:36
+#: guess.c:45
 #, c-format
 msgid "Wrong input!\n"
 msgstr "Неверный ввод!\n"
 
-#: guess.c:52
+#: guess.c:61
 #, c-format
 msgid "Your number is %d! \n"
 msgstr "Вы загадали %d! \n"
 
-#: guess.c:54
+#: guess.c:63
 #, c-format
 msgid "You made a mistake when answering the questions :( \n"
 msgstr "При ответе на вопросы вы сделали ошибку :( \n"

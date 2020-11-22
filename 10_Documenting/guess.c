@@ -1,3 +1,8 @@
+/** @file guess.c
+ * Main library file
+ * Guess a number
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,11 +10,15 @@
 #include <libintl.h>
 #include <locale.h>
 
-#define MIN_NUMB 0
-#define MAX_NUMB 100
+#define MIN_NUMB 0 /**< Cannot exceed bits in a long */
+#define MAX_NUMB 100 /**< Cannot exceed bits in a long */
 
 #define _(STRING) gettext(STRING)
 #define LOCALE_PATH "."
+
+/**
+* Main function for guessinggggggggggggg
+*/
 
 int main(int argc, char *argv[]) {
     setlocale (LC_ALL, "");
