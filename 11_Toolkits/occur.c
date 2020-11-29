@@ -16,7 +16,7 @@ comp(GSList *a, GSList *b) {
 }
 
 void str_parse(GHashTable *hash, char * s) {
-    gchar * word;
+    gchar *word, *word_copy;
     gchar ** s_split = g_strsplit_set(s, "\n ", -1);
     gint ind;
     gpointer hash_pointer;
@@ -28,16 +28,17 @@ void str_parse(GHashTable *hash, char * s) {
         } else {
             gint* first_occur = g_new(gint, 1);
             *first_occur = 1;
-            g_hash_table_insert(hash, word, first_occur);
+            word_copy = g_strdup(word);
+            g_hash_table_insert(hash, word_copy, first_occur);
         }
     }
-    g_free(s_split);
+    g_strfreev(s_split);
     return;
 }
 
 int main(int argc, char** argv) {
     char *buf = malloc(BUF_SIZE);
-    GHashTable * hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, NULL);
+    GHashTable * hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
     while (fgets(buf, BUF_SIZE - 1, stdin) != NULL) {
         str_parse(hash, buf); 
     }
@@ -58,7 +59,10 @@ int main(int argc, char** argv) {
     for(item = list; item; item = item->next) {
         printf("%s %d\n", (char *)g_slist_nth_data(item->data, 0), *(int *)g_slist_nth_data(item->data, 1));
     }
-    g_slist_free(list);
     g_hash_table_destroy(hash);
+    for(item = list; item; item = item->next) {
+        g_slist_free(item->data);
+    }
+    g_slist_free(list);
     return 0;
 }
