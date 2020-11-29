@@ -1,0 +1,3 @@
+bin_PROGRAMS = occur
+CFLAGS += $(GLIB_CFLAGS) -Wall
+LIBS += $(GLIB_LIBS)
