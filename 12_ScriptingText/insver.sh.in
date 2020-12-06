@@ -1,0 +1,3 @@
+echo " COMMENT:: $1, $2: `date`"
+sed -i '/\/* COMMENT::/d' src/*.c src/*.h
+sed -i "1s/^/\/* COMMENT:: $1, $2: `date`*\/\n/" src/*.c src/*.h

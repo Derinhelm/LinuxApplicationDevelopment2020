@@ -1,8 +1,8 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
+AC_INIT([Growable_Memory_Buffers], [0.0.0], [Derinhelm@yandex.ru])
 AC_PREREQ([2.69])
-AC_INIT([Growable Memory Buffers], [0.0.0], [Derinhelm@yandex.ru])
 AM_INIT_AUTOMAKE([foreign])
 LT_INIT([disable-static])
 AC_CONFIG_SRCDIR([src/buf.h])
@@ -40,7 +40,8 @@ AC_CHECK_FUNCS([gettimeofday strtoull])
 
 AC_CONFIG_FILES([Makefile
                  tests/Makefile
-                 src/Makefile])
+                 src/Makefile
+                 insver.sh])
 
 AC_ARG_ENABLE([gcov],
   [AS_HELP_STRING([--enable-gcov],
@@ -52,6 +53,4 @@ AM_CONDITIONAL([COND_GCOV],[test '!' "$enable_gcov" = no])
 
 AC_OUTPUT
 
-echo " COMMENT:: AC_PACKAGE_NAME, AC_PACKAGE_VERSION: `date`"
-sed -i '/\/* COMMENT::/d' src/*.c src/*.h
-sed -i "1s/^/\/* COMMENT:: AC_PACKAGE_NAME, AC_PACKAGE_VERSION: `date`*\/\n/" src/*.c src/*.h
+sh insver.sh AC_PACKAGE_NAME AC_PACKAGE_VERSION
