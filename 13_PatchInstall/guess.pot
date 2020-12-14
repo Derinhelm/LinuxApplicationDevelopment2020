@@ -1,0 +1,23 @@
+# Guess a number.
+# Copyright (C) 2020 DERINHELM
+# This file is distributed under the same license as the guess package.
+# Derinhelm Derinhelm@yandex.ru, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: guess 0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-15 18:52+0300\n"
+"PO-Revision-Date: 2020-11-15 18:55+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: guess.c:21
+#, c-format
+msgid "Input a number from 0 to 100: "
+msgstr ""
